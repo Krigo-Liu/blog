@@ -1,5 +1,5 @@
 import { defineUserConfig } from "vuepress";
-import { hopeTheme } from "vuepress-theme-hope";
+import theme from "./theme.js";
 
 export default defineUserConfig({
   base: "/",
@@ -8,14 +8,7 @@ export default defineUserConfig({
   title: "博客演示",
   description: "vuepress-theme-hope 的博客演示",
 
-  theme: hopeTheme({
-    plugins:{
-      mdEnhance:{
-        mathjax:true
-      }
-    }
-  })
-
+  theme,
   // 和 PWA 一起启用
   // shouldPrefetch: false,
 });
