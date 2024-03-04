@@ -4,9 +4,9 @@ layout: BlogHome
 icon: home
 title: 博客主页
 heroImage: https://theme-hope-assets.vuejs.press/logo.svg
-heroText: 你博客的名称
+heroText: Krigo's Blog
 heroFullScreen: true
-tagline: 你可以在这里放置你的口号与标语
+tagline: 记住，这一章的名字叫，候鸟
 projects:
   - icon: project
     name: 项目名称
@@ -32,11 +32,6 @@ projects:
     name: 伙伴名称
     desc: 伙伴详细介绍
     link: https://你的伙伴链接
-
-  - icon: https://theme-hope-assets.vuejs.press/logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
 
 footer: 自定义你的页脚文字
 ---

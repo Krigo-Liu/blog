@@ -6,6 +6,7 @@ author: Krigo
 category:
     - MATH
 tag: 
+    - MATH
     - Numerical Method
     - Computational Mathematics
 footer: Thank's my mentor Cai's help
