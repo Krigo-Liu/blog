@@ -33,5 +33,5 @@ projects:
     desc: 伙伴详细介绍
     link: https://你的伙伴链接
 
-footer: 自定义你的页脚文字
+footer: 昨天被朋友拉去按背，现在坐在椅子上好疼。。。
 ---
