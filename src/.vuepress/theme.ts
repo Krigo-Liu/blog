@@ -72,7 +72,7 @@ export default hopeTheme({
   // 加密配置
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["Liuyuhao1"],
+      "/posts/MATH/SLDG/1d_SLDG.html": ["Liuyuhao1"],
     },
   },
 

@@ -1,12 +1,12 @@
 import { defineClientConfig } from "vuepress/client";
-import { hasGlobalComponent } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/@vuepress/helper/lib/client/index.js";
+import { hasGlobalComponent } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/@vuepress/helper/lib/client/index.js";
 
-import { useScriptTag } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/@vueuse/core/index.mjs";
-import FontIcon from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
-import Badge from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
-import VPCard from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-plugin-components/lib/client/components/VPCard.js";
+import { useScriptTag } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/@vueuse/core/index.mjs";
+import FontIcon from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
+import Badge from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
+import VPCard from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-plugin-components/lib/client/components/VPCard.js";
 
-import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
+import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
 
 export default defineClientConfig({
   enhance: ({ app }) => {

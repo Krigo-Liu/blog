@@ -1,6 +1,6 @@
 ---
 title: Semi-Lagrangian Discountinuous Galerkin (SLDG) method — 1D
-icon: file
+icon: lock #file
 order: 3
 author: Krigo
 category:

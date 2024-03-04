@@ -1,16 +1,16 @@
 import { defineClientConfig } from "vuepress/client";
 
 
-import { HopeIcon, Layout, NotFound, useScrollPromise, injectDarkmode, setupDarkmode, setupSidebarItems } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/export.js";
+import { HopeIcon, Layout, NotFound, useScrollPromise, injectDarkmode, setupDarkmode, setupSidebarItems } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/export.js";
 
-import { defineCatalogInfoGetter } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/@vuepress/plugin-catalog/lib/client/index.js"
+import { defineCatalogInfoGetter } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/@vuepress/plugin-catalog/lib/client/index.js"
 import { h } from "vue"
-import { BlogCategory, BlogHome, BlogType, BloggerInfo, Timeline, setupBlog } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/export.js";
-import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/styles/all.scss";
-import { GlobalEncrypt, LocalEncrypt } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/export.js";
-import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/styles/all.scss"
+import { BlogCategory, BlogHome, BlogType, BloggerInfo, Timeline, setupBlog } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/export.js";
+import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/styles/all.scss";
+import { GlobalEncrypt, LocalEncrypt } from "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/export.js";
+import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/styles/all.scss"
 
-import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/krigo.github.io/Krigo_blog/node_modules/vuepress-theme-hope/lib/bundle/styles/all.scss";
+import "/Users/yadu/Library/Mobile Documents/com~apple~CloudDocs/Study/Krigo_Blog/node_modules/vuepress-theme-hope/lib/bundle/styles/all.scss";
 
 defineCatalogInfoGetter((meta) => {
   const title = meta.t;
