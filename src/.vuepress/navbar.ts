@@ -8,7 +8,7 @@ export default navbar([
     icon: "pen-to-square",
     prefix: "/posts/",
     children: [
-      
+      "MATH/SLDG/1d_SLDG.md"
     ],
   },
   {
