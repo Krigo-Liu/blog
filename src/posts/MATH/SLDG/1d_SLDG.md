@@ -115,7 +115,12 @@ where $I^{*}_{j} = [x^{*}_{j-\frac{1}{2}},x^{*}_{j+\frac{1}{2}}]$ with $x^{*}_{j
 
 ## Implementation
 ### Step 1
-Initially, we select $k+1$ interpolation points $x_{j,q}$, where $q = 0,...,k$(此时0到k就正好是k+1个), empolying methods like Gauss-Lobatto points within the interval $I_j$. 
+Initially, we select $k+1$ interpolation points $x_{j,p}$, where $p = 0,...,k$(此时0到k就正好是k+1个), empolying methods like Gauss-Lobatto points within the interval $I_j$.
+
+
+![Gauss-Lobatto](./images/Gauss-Lobatto.png)
+
+
 ::: tip Gauss-Lobatto
 Utilizing Gaussian quadrature with a weighting function $W(x)=1$, encompassing the endpoints of the interval $[-1,1]$, involves a total of n abscissas, resulting in $r=n-2$ free abscissas. The abscissas are symmetric about the origin, and the general formula is given by:
  $$
@@ -130,15 +135,19 @@ $$
 \end{equation}
 $$
  and the endpoint are $w_{i,n}\frac{2}{n(n-1)}$.
-
 :::
+
+
 Subsequencetly, we determine the footpoints $x^{*}_{j,q}$ through numerical solutions to the trajectory equation.
+
 
 $$
 \begin{equation}
     \frac{dx(t)}{dt} = a(x(t),t), \text{ with } x(t^{n+1}) = x_{j,q}
 \end{equation}
 $$
+
+
 ```Fortran
     ! assemble gauss lobatto of an upstream element
     ! prepare for interpolating the test function.
