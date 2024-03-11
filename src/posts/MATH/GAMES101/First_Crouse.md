@@ -10,6 +10,7 @@ tag:
     - Computer Graphics
 footer: Thank's the teachers from Beijing University
 copyrigh: 无版权
+date: 2024-03-05
 ---
 
 # Fundamentals of Linear Algebra

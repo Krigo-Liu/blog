@@ -1,3 +1,17 @@
+---
+title: Chapter 1 for Graph Theory
+icon: file
+order: 3
+author: Krigo
+category:
+    - MATH
+tag: 
+    - MATH
+    - Graph Theory
+footer: Thank's for my Dr.ChiuFai WONG
+copyrigh: 无版权
+date: 2024-03-01
+---
 # Adjacency Matrix - (邻接矩阵?)
 
 ::: tip Definition 1.1

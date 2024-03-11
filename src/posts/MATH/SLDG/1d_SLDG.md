@@ -11,6 +11,7 @@ tag:
     - Computational Mathematics
 footer: Thank's my mentor Cai's help
 copyrigh: 无版权
+date: 2024-03-01
 ---
 
 ## Equation description
