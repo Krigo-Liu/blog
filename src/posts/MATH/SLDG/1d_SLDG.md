@@ -117,6 +117,19 @@ where $I^{*}_{j} = [x^{*}_{j-\frac{1}{2}},x^{*}_{j+\frac{1}{2}}]$ with $x^{*}_{j
 ### Step 1
 Initially, we select $k+1$ interpolation points $x_{j,q}$, where $q = 0,...,k$(此时0到k就正好是k+1个), empolying methods like Gauss-Lobatto points within the interval $I_j$. 
 ::: tip Gauss-Lobatto
+Utilizing Gaussian quadrature with a weighting function $W(x)=1$, encompassing the endpoints of the interval $[-1,1]$, involves a total of n abscissas, resulting in $r=n-2$ free abscissas. The abscissas are symmetric about the origin, and the general formula is given by:
+ $$
+ \begin{equation}
+     \int_{-1}^{1}f(x)dx = w_1 f(-1) + w_n f(1) + \sum_{i=2}^{n-1}w_if(x_i).
+ \end{equation}
+$$
+ The unrestricted abscissas $x_i$ for $i=2, ..., n-1$ correspond to the roots of the derivative $P_{n-1}^{'}(x)$, where $P(x)$ represents a Legendre polynomial. The weights associated with these unrestricted abscissas are:
+ $$
+\begin{equation}
+     w_i = - \frac{2n}{(1-x_i^2)P^{''}_{n+1}P^{'}_{m}(x_i)}= \frac{2}{n(n-1)[P_{n-1}(x_i)]^2}
+\end{equation}
+$$
+ and the endpoint are $w_{i,n}\frac{2}{n(n-1)}$.
 
 :::
 Subsequencetly, we determine the footpoints $x^{*}_{j,q}$ through numerical solutions to the trajectory equation.
@@ -126,7 +139,33 @@ $$
     \frac{dx(t)}{dt} = a(x(t),t), \text{ with } x(t^{n+1}) = x_{j,q}
 \end{equation}
 $$
+```Fortran
+    ! assemble gauss lobatto of an upstream element
+    ! prepare for interpolating the test function.
+    do i = 1,nx
+        ! consider an upstream element
+        p => element_star(i)
+        pe => element(i)
+        
+        if( nk>0 )then
+            p%xgl_star(1) =  vertex_star(i)%coor
+            p%xgl_star(nk+1) = vertex_star(i+1)%coor
+            !
+            if( nk>1 )then
+                pe%xgl(1) = vertex(i)%coor
+                pe%xgl(nk+1) = vertex(i+1)%coor
 
+                do ii = 2,nk
+                    pe%xgl(ii) = pe%xgl(1)+( 1.0/2. + gau_lob(ii,1) )*(  pe%xgl(nk+1)-pe%xgl(1) )
+
+                    call runge_kutta( pe%xgl(ii) , p%xgl_star(ii)   ,dt)
+                enddo
+
+            endif
+        endif
+    enddo
+```
+::: tip Runge-Kutta 4
 Achieved using the Runge-Kutta method as follow,
 
 $$
@@ -144,7 +183,7 @@ $$
 $$
 
 ahieves fifth-order accuracy $O(h^5)$. Since for RK4, the local truncation error is on the order of $O(h^5)$, where $h$ is the step size.
-
+::: 
 ### Step 2
 
 Recalling that the test function $\psi(x,t)$ resolves the final-value problem and consequently remains constant along the characteristics i.e., $\psi(x^{*}_{j,q}) = \Psi(x_{j,q})$. Our next step is to ascertain the unique polynomial $\psi^{*}(x)$ of degree $k$. This polynomial is chosen such that it interpolates $\psi(x,t^n)$ with the pairs $(x^{*}_{j,q},\Psi(x_{j,q}))$ for $q=0, \ldots, k$.
@@ -164,9 +203,28 @@ $$
 \end{equation}
 $$
 Or we need to use the orthogonal polynomial 1d form or Legendre polynomials
-::: tip Legendre polynomials
+::: tip Legendre polynomials in [-1,1]
 
+$$
+\begin{equation}
+    \xi = \frac{2(x-x_j)}{h_j} \in[-1,1], \forall x\in I_{j}
+\end{equation}
+$$
+The first several polynomials are defined as 
+$$
+p_0(\xi) = 1, p_1(\xi) = \xi, p_2(\xi) = \frac{1}{2}(3\xi^{2}-1), \\
+p_3(\xi) = \frac{1}{2}(5\xi^{3}-3\xi)
+$$
+
+In the each interval $I_{j}$, we can take the local functions $\{\psi_{l}(x)\}_{l=0}^{l=k}$
+
+$$
+\psi_{l}(x) = p_{l}(\xi),x\in I_{j}
+$$
 :::
+
+
+
 Then we can let,
 $$
 A = \begin{bmatrix}
@@ -190,11 +248,190 @@ Then system (11) can be expressed in matrix from $AX=B$. Then we need to find th
 
 ### Step 3
 
-Detect interval/sub-intervals within $I^{*}_{j} = \cup_{l}I^{*}_{j,l}$, which are the intersections bewteen $I^{*}_{j}$ and the grid elements(l is the index for sub-interval). Here $l$ serves as the index for the sub-interval. For each interval, there may exist two sub-intervals: $I^{*}_{j,1}=[x^{*}_{j-\frac{1}{2}},x_{j-\frac{1}{2}}]$ and $I_{j,2}=[x_{j-\frac{1}{2}},x^{*}_{j+\frac{1}{2}}]$
+Detect interval/sub-intervals within $I^{*}_{j} = \cup_{l}I^{*}_{j,l}$, which are the intersections bewteen $I^{*}_{j}$ and the grid elements(l is the index for sub-interval). Here $l$ serves as the index for the sub-interval. For each interval, there may exist two sub-intervals: $I^{*}_{j,1}=[x^{*}_{j-\frac{1}{2}},x_{j-\frac{1}{2}}]$ and $I_{j,2}=[x_{j-\frac{1}{2}},x^{*}_{j+\frac{1}{2}}]$, Like the picture below.
+
+Firstly, for each result of $x^{*}_{j-\frac{1}{2}}$ or $x^{*}_{j+\frac{1}{2}}$ we record the distance with the original start point. Then, we calculate the number of subinterval by `(vertex_star(i)%coor-xleft)/dx`.
+```Fortran
+do i = 1 ,nx+1
+    call runge_kutta( vertex(i)%coor ,  vertex_star(i)%coor  ,dt)
+    !ceiling 是向上取整
+    vertex_star(i)%id = ceiling( (vertex_star(i)%coor-xleft)/dx )
+enddo
+```
+And in the implementation, we use a new data structure and create a pointer to obtain all $x^{*}$.
+```Fortran
+do i = 1,nx
+    ! consider an upstream element
+    p => element_star(i)
+    p%point_origin = vertex_star(i)
+    p%point_end = vertex_star(i+1)
+
+    call search_segment(p)
+enddo
+```
+After that, we use the `sgement_search` function, to get all subinterval of an upstream element.
+
+```Fortran
+mx = p%point_end%id - p%point_origin%id ! mx也表示x*中有几个点
+
+p%point_inter(0) = p%point_origin !x* 的起始点
+p%point_inter(1+mx) = p%point_end !如果x* 都在一个interval里，那么mx = 0, 点就是 p%point_inter(1)
+p%nsub = mx+1 !x* 有几个subinterval
+
+if(mx .ne. 0)then
+    do kk = 1 , mx
+        inter = p%point_origin%id + kk !是第几个x
+        p%point_inter(kk)%coor = xgrid( inter ) !通过xgrid找到x的值
+        p%point_inter(kk)%id = inter !记录起始点对应的位置
+    enddo
+endif
+!记录每一个subinterval起始点，终点&起始点对应的位置
+do kk = 1 , 1 + mx
+    p%segment(kk)%porigin = p%point_inter(kk-1)
+    p%segment(kk)%pend = p%point_inter(kk)
+    p%segment(kk)%id = p%point_inter(kk-1)%id
+enddo
+```
+![alt text](./images/image.png)
+
+Finally, we obtain $I^{*}_{j} = \cup_{l}I^{*}_{j,l}$
+
+
 ### Step 4
-Using the discontinuous Galerkin method to obtain $u^{n+1}_{h}\in P^{k}(I_j)$
+Using the discontinuous Galerkin method to obtain $u^{n+1}_{h}\in P^{k}(I_j)$, such that the above equation holds for any $\Psi_{h}\in P^{k}(I_j)$.
+
+In the each interval $I_{j}$, we can take the local functions $\{\psi_{l}(x)\}_{l=0}^{l=k}$
+$$
+\begin{equation}
+    \psi_{l}(x) = p_{l}(\xi),x\in I_{j}
+\end{equation}
+$$
+where $p_{l}(\xi)$ is the Legendre polynomials in $[-1,1]$.
+
+The basis functions satisfy the following property:
+- $L^2-$orthogonality
+$$
+\begin{equation}
+    \int_{-1}^{1}p_{m}(\xi)p_{n}(\xi)d\xi = \frac{2}{2n+1}\delta_{mn},\forall m,n = 0,1,...,k
+\end{equation}
+$$
+where $\delta_{mn}$ is Kronecker delta,equal to 1 if $m = n$ and to 0 otherwise. Then, the local basis functions $\{\psi_{l}(x)\}$ in $I_{j}$
+
+$$
+\begin{equation}
+    \int_{I_j}\psi_{m}(x)\psi_{n}(x)dx = \int_{-1}^{1}p_{m}(\xi)p_{n}(\xi)d\xi \cdot \frac{h_j}{2}= \frac{h_j}{2n+1}\delta_{mn}
+\end{equation}
+$$
+Where $h_j$ is the mesh size for sub-interval and this formula means the $\psi$ is linear independent.
+
+Therefore, $u^{n+1}_{h} = P^{k}(I_j)$ can be expressed with $\psi_m$
+$$
+u^{n+1}_{h} = \sum_{m=0}^{k}\alpha_{m}^{n+1}\psi_m
+$$
+
+### Step 5
+
+For $u^{0}_h$, in each element $j$, we can assume $u^{0}_{h} = \sum_{m=0}^{k} = \alpha^{0}_{m}\psi_{n}, \text{ For }n=0,..,k$
+
+$$
+\begin{align}
+    (u^{0},\psi_{n}) &=\sum_{m=0}\alpha_{m}^{0}(\theta_m,\theta_n) \\
+                     &= \alpha_{m}^{0}\frac{h_j}{2m+1}\delta_{mn}
+\end{align}
+$$
+where we obtain $(u^{0},\psi_{n})$ by numerical integration,
+$$
+\begin{equation}
+    \alpha_{m}^{0} = (2m+1) \frac{(u^{0},\psi_{n})}{h_j}
+\end{equation}
+$$ 
+
+### Step 6
+
+For each element $j$, we have 
+$$
+\begin{equation}
+    \int_{I_j} u^{n+1}_h \Psi_h dx = \int_{I^{*}_{j}}u^{n}_{h}\psi^{n}dx = \sum_{l}\int_{I_{j,l}}u^{*}_{h}\psi^{*}dx
+\end{equation}
+$$
+
+Note that 
+
+$$
+\begin{aligned}
+    &m^{j}_{st} = \int_{I_j}\psi_s \psi_t dx = \frac{h_j}{2s+1}\delta_{st} \\
+    &b_{s}^{j} = \sum_{l}\int_{I_{j,l}}u^n_h\psi_s^* dx \\
+
+\end{aligned}
+$$
+
+The matrix is 
+
+$$
+\begin{bmatrix}
+    m_{00}^{j} & m_{01}^{j} &\cdots &m_{0k}^{j} \\
+    m_{10}^{j} & m_{11}^{j} &\cdots &m_{1k}^{j} \\
+    \vdots & \vdots &\cdots &\vdots \\
+    m_{k0}^{j} & m_{k1}^{j} &\cdots &m_{kk}^{j} \\
+\end{bmatrix}
+\begin{bmatrix}
+    \alpha_{0}^{j,n+1} \\
+    \alpha_{1}^{j,n+1} \\
+    \vdots \\
+    \alpha_{k}^{j,n+1} \\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    b{0}^{j} \\
+    b{1}^{j} \\
+    \vdots \\
+    b{k}^{j} \\
+\end{bmatrix}
+$$
+
+### Step 7
+
+$$
+\begin{aligned}
+    &M^j = [m^{j}_{st}]_{(k+1)\times (k+1)}, \text{ for }s,t=0,\cdots,k\\
+    &B^j = [b_{s}^{j}]_{(k+1)\times 1}, \text{ for }s=0,\cdots,k\\
+    &X^j = [\alpha^{j,n+1}_{s}]_{(k+1)\times 1}, \text{ for }s=0,\cdots,k
+
+\end{aligned}
+$$
 
 
+Then the global stiffness matrix is 
 
+$$
+M = \begin{bmatrix}
+    M^{1} & 0 &\cdots &0 \\
+    0 & M^{2} &\cdots &0 \\
+    \vdots & \vdots &\cdots &\vdots \\
+    0 & 0 &\cdots &M^{N} \\
+\end{bmatrix}
+\\
+,
+X^{n+1} = \begin{bmatrix}
+    X^1 \\
+    X^2 \\
+    \vdots \\
+    X^N \\
+\end{bmatrix}
+,
+B\begin{bmatrix}
+    B^1 \\
+    B^2 \\
+    \vdots \\
+    B^N \\
+\end{bmatrix}
+$$
+
+Finally, we can solve the linear equatiuns systems
+$$
+\begin{equation}
+    MX^{n+1} = B
+\end{equation}
+$$
 
 
