@@ -12,7 +12,7 @@ footer: Thank's for my Dr.ChiuFai WONG
 copyrigh: 无版权
 date: 2024-03-01
 ---
-## What is Adjacency Matrix
+## Adjacency Matrix
 ::: important Definition 1.1
 
 Let $G = (V,E)$ be a graph whose vertex-set $V(G) = \{v_1,v_2,...,v_3\}.$ The **adjacency matrix** of $G$ is an $n \times n$ Matrix $A(G)$ whose entries $a_{ij}$ are given by:
@@ -71,7 +71,7 @@ $$
 v_1 \to v_2 \to v_3 \to v_4 \to v_5
 $$
 
-## What is the Spectrum of Matrix
+## Spectrum of Matrix
 ::: important Definition 1.4 
 
 1. The **spectrue** of a square matrix $M$ is the set of eigenvalue(特征值) of $M$, together with their multiplicities(数量)
@@ -88,12 +88,58 @@ $$
 :::
 
 ::: info Example 1.5
-The [complete graph](../Basic_concept.md#complete-graph)
+The [complete graph](../Basic_concept.md#complete-graph) has adjacency matrix
+$$
+A(K_n) = 
+\begin{pmatrix}
+    0 &1 &\cdots &1\\
+    1 &0 &\cdots &\vdots\\
+    \vdots &\ddots &\ddots &1\\
+    0 &\cdots &1 &1\\
+\end{pmatrix}_{n\times n}
+$$
+
+Consider the 
+$$
+J_n = I_n + A(K_n) = 
+\begin{pmatrix}
+    1 &1 &\cdots &1\\
+    1 &1 &\cdots &\ddots\\
+    \vdots &1 &\cdots &1\\
+    1 &\cdots &1 &1\\
+\end{pmatrix}_{n\times n}
+$$
+
+Since the rank of $J_n = 1$（对于可对角化的矩阵来说，矩阵的非零特征值的数量等于矩阵的秩）, $0$ is an eigenvalue of $j_n$ with multiplicity of $n-1$.
+
+Since 
+$$
+\mu_1 + \mu_2 + \cdots + \mu_n = \text{ Tr }(J_n) = n
+$$
+the last eigenvalue $\mu_n = n$.
+
+So, the trace of matrix:
+The sum of the diagonal elements of matrix $A$ is called the trace of matrix and is denoted by $\text{tr}(A)$.
+$$
+\text{ Spec }(J_n) = \begin{pmatrix}
+    n &0\\
+    1 &n-1
+\end{pmatrix}
+
+$$
+
+Hence, $J_n$ 与 $A(K_n)$ 的区别就是差了一个 $I$。因此只需讲 $J_n$ 的特征值 -1，即为 $A(K_n)$ 的特征值.
+$$
+\text{Spec}(A(K_n)) = \begin{pmatrix}
+    n-1 & -1\\
+    1 &n-1
+\end{pmatrix}
+$$
 :::
 
-## Subgraoh
+## Subgraph
 
-## Characteristic polynomial
+## Characteristic Polynomial
 
 ## Bipartite
 
