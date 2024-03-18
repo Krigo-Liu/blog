@@ -7,7 +7,8 @@ export default navbar([
     icon: "pen-to-square",
     prefix: "/posts/",
     children: [
-      "MATH/SLDG/1d_SLDG.md"
+      "MATH/SLDG/1d_SLDG.md",
+      "MATH/Graph Theory/Chapter_1/Chapter_1.md"
     ],
   },
   {

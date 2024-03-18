@@ -1,5 +1,5 @@
 ---
-title: Semi-Lagrangian Discountinuous Galerkin (SLDG) method — 1D
+title: (SLDG) method — 1D
 icon: lock #file
 order: 3
 author: Krigo
@@ -11,12 +11,12 @@ tag:
     - Computational Mathematics
 footer: Thank's my mentor Cai's help
 copyrigh: 无版权
-date: 2024-03-01
 ---
 
+# Semi-Lagrangian Discountinuous Galerkin
 ## Equation description
-
-::: tip Firstly, we cnsider the one-dimensional transport equation:
+### One-dimensional transport equation
+::: tip Firstly, we consider the one-dimensional transport equation:
 $$
 \begin{equation}  
 \left\{  
@@ -36,7 +36,8 @@ $$
 - The domain is partitioned by non-overlapping intervals, $\Omega=\cup_{j}I_{j}$.
 - The mesh size is denoted $h = \max_{j}\Delta x_{j}$.
 - n-th time level with $\Delta t^{n} = t^{n+1}-t^{n}$
-
+---
+### Approximation space
 ::: tip Approximation space (近似空间)
 
 $$
