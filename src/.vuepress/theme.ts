@@ -74,6 +74,7 @@ export default hopeTheme({
     config: {
       "/posts/MATH/SLDG/1d_SLDG.html": ["Liuyuhao1"],
       "/posts/MATH/SLDG/SLDG_coding_explaination.html": ["Liuyuhao1"],
+      "/posts/MATH/SLDG/2d_SLDG.html": ["Liuyuhao1"]
     },
   },
 

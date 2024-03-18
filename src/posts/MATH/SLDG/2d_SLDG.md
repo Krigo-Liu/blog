@@ -24,4 +24,4 @@ $$
 The IVP & BG just need appropriate.
 :::
 
-### Weak formulation of characteristics 
+### Weak formulation of characteristics Galerkin method
