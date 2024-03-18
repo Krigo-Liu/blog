@@ -10,7 +10,6 @@ tag:
     - Graph Theory
 footer: Thank's for my Dr.ChiuFai WONG
 copyrigh: 无版权
-date: 2024-03-01
 ---
 ## Adjacency Matrix
 ::: important Definition 1.1
@@ -138,9 +137,51 @@ $$
 :::
 
 ## Subgraph
+::: note
+Let $G = (V,E)$ be a graph. 
+
+If $\emptyset \neq \subseteq V$, the **subgraph of** $G$ **induced by** $U$ is the subgraph whose vertex set is $U$ and which contains all edges $\{x,y\}$(from $G$) for $x,y\in U$, we denote this subgraph by $[U]$.
+
+没看懂这个定义， 
+1. 为什么 ==contains all edges==? 
+2. ==vertex set== 是指，所有点的集合吗？
+:::
+
+关于 **subgraph** 的理解主要看下面这个例子
+::: info Example 1.6
+
+![Example of Subgraph](../images/Example_of_Subgraph.png)
+
+(a) is what we denoted $G = (V,E)$ in above.
+
+In (b) and (c) are the **subgraphs** and **induced** subgraphs of $G$, where (c) is disconnected.
+
+$G_1 = [U_1] = \{b, c, d, e\}$ and $G_2 = [U_2] = \{a, d, f, e\}$.
+
+In (d) is the subgraph but not an induced subgraph of $G$, because the edge $\{c, e\}$ is not present.
+
+(d): $G_3 = [u_3] = \{a, b, c, e, f\}$
+:::
 
 ## Characteristic Polynomial
+这一部分主要是介绍关于图的特征多项式。
 
+针对每一张图，我们都可以写出一条特征多项式。
+
+因此这一章也是最重要的一章，因为往后的很多性质都与其特征多项式有或大或小的关系。
+
+::: important Theorm 1.7
+The characterristic polynomial of $A(G)$: 
+$$
+\begin{equation}
+    p(A(G),\mu) = det(\mu I_{n} - A(G)) = \mu^{n} + c_1 \mu^{n-1} + c_2\mu^{n-2} + c_3\mu^{n-3} + \cdots + c_n
+\end{equation}
+$$
+1. $c_1$ = 0;
+2. $-c_2$ is the number of edges of $G$;
+3. $-c_3$ is twice the number of triangles in $G$;
+4. $c_n = (-1)^{n}\det(A(G))$, 这一条性质只能用在 $c_n$ 为多项式的最后一项的时候，对于 $c_4 ~ c_{n-1}$ 请使用 Theorem 1.18
+:::
 ## Bipartite
 
 ## Diameter
