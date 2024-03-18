@@ -13,7 +13,7 @@ footer: Thank's my mentor Cai's help
 copyrigh: 无版权
 ---
 
-# Semi-Lagrangian Discountinuous Galerkin
+# Semi-Lagrangian Discountinuous Galerkin -- 1 D
 ## Equation description
 ### One-dimensional transport equation
 ::: tip Firstly, we consider the one-dimensional transport equation:

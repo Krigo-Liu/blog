@@ -1,5 +1,5 @@
 ---
-title: (SLDG) method — 1D && Fortran 代码实现思虑与我的理解
+title: (SLDG) method — 1D && Fortran 代码实现思路与我的理解
 icon: lock #file
 order: 3
 author: Krigo
