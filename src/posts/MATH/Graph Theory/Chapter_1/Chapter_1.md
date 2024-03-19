@@ -32,9 +32,9 @@ $$
 :::
 
 这个定义有如下几个性质：
-1. The adjacency matrix of $G$, $A(G)$, is **symmetric**, that is $a_{ij} = a_{ji}$
-2. Since a simple graph has no loops, diagonal entry $a_{ii} = 0,i = 1,2,...,n$
-3. The $i-$th row or column sum equal to $\deg(v_i)$.
+1. **对称:** The adjacency matrix of $G$, $A(G)$, is **symmetric**, that is $a_{ij} = a_{ji}$
+2. **对角线上的点都为零:** Since a simple graph has no loops, diagonal entry $a_{ii} = 0,i = 1,2,...,n$
+3. **行/列数量为矩阵的degree:****** The $i-$th row or column sum equal to $\deg(v_i)$.
 
 ::: tip Lemma 1.2 
 The number of walks of length $l$ in $G$, from $v_i$ to $v_j$, is the entry in position $(i,j)$ of the matrix $A(G)^{l}$.

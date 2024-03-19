@@ -1,5 +1,6 @@
 # The proof of Lemma 1.2
 
+## [Lemma 1.2](../Chapter_1.md#adjacency-matrix)
 ::: tip Lemma 1.2 
 The number of walks of length $l$ in $G$, from $v_i$ to $v_j$, is the entry in position $(i,j)$ of the matrix $A(G)^{l}$.
 :::
