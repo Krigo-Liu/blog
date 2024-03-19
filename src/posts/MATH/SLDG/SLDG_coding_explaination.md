@@ -12,6 +12,7 @@ tag:
     - Coding
 footer: Thank's my mentor Cai's help and my classmates
 copyrigh: 无版权
+date: 2024-03-18
 ---
 
 ## Algorithm Sturcture

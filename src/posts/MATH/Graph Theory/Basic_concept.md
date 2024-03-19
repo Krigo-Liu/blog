@@ -10,6 +10,7 @@ tag:
     - Graph Theory
 footer: Thank's for my Dr.ChiuFai WONG
 copyrigh: 无版权
+date: 2024-03-14
 ---
 ## Directed graph, vertices, edges, undirected graph, vertext set, edge set
 
@@ -45,3 +46,23 @@ The **complete graph** on [$V$](#directed-graph-vertices-edges-undirected-graph-
 ![Complete $K_1$ to $K_6$](./images/Complete_graph_example.png)
 
 ## Circle graph & Path graph
+
+## Trace of Matrix
+
+The sum of the diagonal of $A$ is called the ==trace== of $A$ and is denoted by $\text{tr}(A)$.
+
+::: note Example
+$$
+A(G) = \begin{pmatrix}
+   a_{11} &a_{12} &\cdots &a_{1n}\\
+   a_{21} &a_{22} &\cdots &a_{2n}\\
+   \vdots &\vdots &\ddots &\vdots\\
+   a_{n1} &a_{n2} &\cdots &a_{nn}\\
+\end{pmatrix}
+$$
+
+Then,
+$$
+\text{tr}(A) = (a_{11} + a_{22} + \cdots + a_{nn})
+$$
+:::

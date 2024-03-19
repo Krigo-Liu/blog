@@ -1,5 +1,5 @@
 ---
-title: The First Crouse for GAMES101
+title: 1. Fundamentals of Linear Algebra
 icon: file
 order: 3
 author: Krigo
@@ -12,8 +12,6 @@ footer: Thank's the teachers from Beijing University
 copyrigh: 无版权
 date: 2024-03-05
 ---
-
-# Fundamentals of Linear Algebra
 
 ## Vector (向量)
 

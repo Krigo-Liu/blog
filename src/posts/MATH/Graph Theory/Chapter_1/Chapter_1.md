@@ -10,7 +10,9 @@ tag:
     - Graph Theory
 footer: Thank's for my Dr.ChiuFai WONG
 copyrigh: 无版权
+date: 2024-03-12
 ---
+
 ## Adjacency Matrix
 ::: important Definition 1.1
 
@@ -168,9 +170,10 @@ In (d) is the subgraph but not an induced subgraph of $G$, because the edge $\{c
 
 针对每一张图，我们都可以写出一条特征多项式。
 
-因此这一章也是最重要的一章，因为往后的很多性质都与其特征多项式有或大或小的关系。
+因此这一章也是==最重要==的一章，因为往后的很多性质都与其特征多项式有或大或小的关系。
 
-::: important Theorm 1.7
+### Characteristic polynomial Theorem
+::: important Theorem 1.7
 The characterristic polynomial of $A(G)$: 
 $$
 \begin{equation}
@@ -180,9 +183,41 @@ $$
 1. $c_1$ = 0;
 2. $-c_2$ is the number of edges of $G$;
 3. $-c_3$ is twice the number of triangles in $G$;
-4. $c_n = (-1)^{n}\det(A(G))$, 这一条性质只能用在 $c_n$ 为多项式的最后一项的时候，对于 $c_4 ~ c_{n-1}$ 请使用 Theorem 1.18
+4. $c_n = (-1)^{n}\det(A(G))$, 这一条性质只能用在 $c_n$ 为多项式的最后一项的时候，对于 $c_4 \thicksim c_{n-1}$ 请使用 Theorem 1.18
+:::
+
+::: important Theorem 1.8
+The graph $G$ with $n$ vertices and $\mu_1, \mu_2, \cdots, \mu_n$ be $n$ eigenvalues of $A(G)$. Then,
+1. $\sum_{i=1}^{n}\mu_{i}^{2} = 2|E(G)|$ where $|E(G)|$ is the number of edges in $G$. 
+
+2.$\sum_{i=1}^{n} \mu_{i}^{3} = 6 \times \text{the number of triangles in G}$
 :::
 ## Bipartite
+Bipartite 也是 这一章中一个很重要的知识点，基本上会和 Characteristic Polynomial 相结合, 同时也在作业题里面有所展示。
+
+==Bipartite is not necessarily complete==.
+
+Complete Graph 可以理解为，任选一个点，它与其他点都有连线
+
+Not Necessary Complete Graph 可以理解为，任选一个点，它与其他点不需要都有连线
+
+::: important Lemma 1.9
+If $G$ is ==bipartite== and $\mu$ is non-zero eigenvalue of $A(G)$ with multiplicity $m$, then $-\mu$ is also an eigenvalue with multiplicity m
+:::
+这个引理其实就是 Theorem 1.10 的 2 的内容，非零特征值会**成对出现**且 **数量相同**。
+
+这个性质会在后面计算 $\text{Spec}(A(G))$ 的时候被多次用到。
+
+::: important Theorem 1.10
+$G$ is a graph with $n$ vertices and $\mu_1, \mu_2, \cdots, \mu_n$ be the eigenvalues of $A(G)$. Then, the following properties are equivalent:
+1. $G$ is bipartite.
+
+2. The non-zero eigenvalues $\mu_i, -\mu_i$ of $A(G)$ occur in pairs with the same multiplicity.
+
+3. $p(A(G),\mu) = \left\{\begin{array}{lr} \mu^{n} + c_2\mu^{n-2} + c_4 \mu^{n-4}+ \cdots + c_{n-1}\mu \quad \text{ if }n \text{ is odd}\\ \mu^{n} + c_2\mu^{n-2} + c_4 \mu^{n-4}+ \cdots + c_{n-1} \qquad \text{if }n \text{ is even} \end{array}\right.$
+
+4. $\sum_{i=1}^{n}\mu_{i}^{2t-1} = 0$ for any positive integer $t$.
+:::
 
 ## Diameter
 

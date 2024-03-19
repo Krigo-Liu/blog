@@ -3,12 +3,32 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
-    text: "Note",
+    text: "SLDG",
     icon: "pen-to-square",
-    prefix: "/posts/",
+    prefix: "/posts/MATH/SLDG",
     children: [
-      "MATH/SLDG/1d_SLDG.md",
-      "MATH/Graph Theory/Chapter_1/Chapter_1.md"
+      "1d_SLDG.md",
+      "2d_SLDG.md",
+      "SLDG_coding_explaination.md",
+    ],
+  },
+  {
+    text: "GAMES001",
+    icon: "pen-to-square",
+    prefix: "/posts/MATH/GAMES001",
+    children: [
+      "Chapter_1.md",
+      "Chapter_2.md",
+    ],
+  },
+  {
+    text: "Graph Theory",
+    icon: "pen-to-square",
+    prefix: "/posts/MATH/Graph Theory/",
+    children: [
+      "Chapter_1/Chapter_1.md",
+      "Basic_concept.md",
+      "InClass/",
     ],
   },
   {
