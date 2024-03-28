@@ -1,6 +1,6 @@
 ---
 title: 一阶迎风格式
-icon: lock #file
+icon: file
 order: 3
 author: Krigo
 category:

@@ -1,6 +1,6 @@
 ---
 title: (SLDG) method — 1D
-icon: lock #file
+icon: file
 order: 3
 author: Krigo
 category:
