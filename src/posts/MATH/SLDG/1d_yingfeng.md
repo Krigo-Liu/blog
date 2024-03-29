@@ -330,7 +330,7 @@ subroutine setdt(time_f)
     
 end subroutine setdt
 ```
-The `get_stream_tn` is used to execute the equation [(3)](./1d_yingfeng.md#code-implementation)
+The `get_stream_tn` is used to execute the equation [(3)](./1d_yingfeng.md#step-2-time-discretisation)
 
 ```
 subroutine get_stream_tn
