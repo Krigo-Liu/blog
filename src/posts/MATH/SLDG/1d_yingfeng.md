@@ -156,6 +156,7 @@ program ying_feng_1D
     
     include "setdt.f90"
     include "get_upstream_tn.f90"
+    include "order_dg.f90"
     
 end program ying_feng_1D
 
@@ -332,38 +333,88 @@ end subroutine setdt
 ```
 The `get_stream_tn` is used to execute the equation [(3)](./1d_yingfeng.md#step-2-time-discretisation)
 
-```
+``` Fortran
 subroutine get_stream_tn
     implicit none
     integer i
 
     element(0)%coor = vertex(0)%coor - dt * (vertex(0)%coor - vertex(nx)%coor)/dx
-    element(nx)%coor = vertex(nx)%coor - dt * (vertex(nx)%coor - vertex(0)%coor)/dx
-    
-    do i = 1,nx
-        !element_star(i)%id = i
-        !element_star(i)%porigin = 
-        !elemnt_star(i)%pend = 
+
+    do i = 1,nx + nghost
+
         element(i)%coor = vertex(i)%coor - dt * (vertex(i)%coor - vertex(i-1)%coor)/dx
     enddo
     
-    do i = 1 - nghost,nx + nghost
-        vertex(i)%coor = element(i)%coor
-        print *, time, ",","FDM:", vertex(i)%coor
-        
-    enddo
-    
-    pause
-    
     do i = 1 - nghost, nx + nghost
-        print *, "Error: ", exact(xgrid(i),time)-vertex(i)%coor
-    enddo
-    pause
         
+        vertex(i)%coor = element(i)%coor
+    enddo
 end subroutine get_stream_tn
 ```
 
+### Step4: Calculate the Error
 
+
+```Fortran
+subroutine order_dg
+    implicit none
+    
+    integer :: kk0
+    real :: error1,error2,error3
+    real :: rr1,rr2,rr3
+    real :: exe
+    
+    do kk0 = 1 - nghost, nx + nghost
+        write(1,*) xgrid(kk0), element(kk0)%coor
+    enddo
+    close(1)
+    
+    open(101, file='error_dg.txt')
+    error1=0.0
+    error2=0.0
+    error3=0.0
+    do kk0 = 1 - nghost, nx + nghost
+        
+        exe = exact( xgrid(kk0) , time_final ) - vertex(kk0)%coor
+        
+        error1 = error1 + abs(exe)
+        error2 = error2 + exe**2
+        error3 = max(error3,abs(exe))
+    enddo
+    
+    error1=error1/nx
+    error2=sqrt(error2/nx)
+    
+    if(kkkk.eq.1) write(101,103), nx, error1, error2, error3
+    
+    write(*,*) 'error', error1, error2
+
+    if(kkkk.gt.1) then
+        rr1 = log(er1/error1)/log(2.)
+        rr2 = log(er2/error2)/log(2.)
+        rr3 = log(er3/error3)/log(2.)
+        write(101,102) nx,error1,rr1,error2,rr2,error3,rr3
+        write(*,*) nx, rr1, rr2, rr3
+    endif
+    
+    er1 = error1
+    er2 = error2
+    er3 = error3
+    
+102 format(i6,1x,3('&',1x, es12.2e2,1x,'&' 1x,f8.2 ,1x),'\\',1x,'\hline')
+103 format(i6,1x,3('&',1x,es12.2E2,1x,'&',1x),'\\',1x,'\hline')
+123 format(4(1x,f16.6))
+    
+    open(2, file="exact.plt")
+    do kk0 = 1 - nghost, nx + nghost
+        exe = 0.
+        exe = exact(xgrid(kk0), time_final)
+        write(2,123) xgrid(kk0), exe
+    enddo
+    close(2)
+
+end subroutine order_dg
+```
 
 
 

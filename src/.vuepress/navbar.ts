@@ -13,15 +13,15 @@ export default navbar([
       "SLDG_coding_explaination.md",
     ],
   },
-  {
-    text: "GAMES001",
-    icon: "pen-to-square",
-    prefix: "/posts/MATH/GAMES001",
-    children: [
-      "Chapter_1.md",
-      "Chapter_2.md",
-    ],
-  },
+  //{
+  //  text: "GAMES001",
+  //  icon: "pen-to-square",
+  //  prefix: "/posts/MATH/GAMES001",
+  //  children: [
+  //    "Chapter_1.md",
+  //    "Chapter_2.md",
+  //  ],
+  //},
   {
     text: "Graph Theory",
     icon: "pen-to-square",

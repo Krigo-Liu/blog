@@ -111,7 +111,7 @@ date: 2024-03-05
 - 内积: $V \times V \rightarrow \mathbb{R}$
   - $u$ and $v$, denote $<u,v>$
 - 赋范线性空间 vs. 内积空间
-  - $dd(u,u) = <u,u>$
+  - $d(u,u) = <u,u>$
   - 范数只给出了向量的长度
   - 内积还给出了向量的夹角
 
