@@ -7,10 +7,7 @@ export default navbar([
     icon: "pen-to-square",
     prefix: "/posts/MATH/SLDG",
     children: [
-      "1d_yingfeng.md",
       "1d_SLDG.md",
-      "2d_SLDG.md",
-      "SLDG_coding_explaination.md",
     ],
   },
   //{

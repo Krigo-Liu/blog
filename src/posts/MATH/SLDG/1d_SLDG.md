@@ -343,7 +343,7 @@ $$
 
 ### Step 5
 
-For $u^{0}_h$, in each element $j$, we can assume $u^{0}_{h} = \sum_{m=0}^{k} = \alpha^{0}_{m}\psi_{n}, \text{ For }n=0,..,k$
+For $u^{0}_h$, in each element $j$, we can assume $u^{0}_{h} = \sum_{m=0}^{k} \alpha^{0}_{m}\psi_{n}, \text{ For }n=0,..,k$
 
 $$
 \begin{align}
