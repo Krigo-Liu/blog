@@ -10,25 +10,27 @@ export default navbar([
       "1d_SLDG.md",
     ],
   },
+
+  {
+    text: "HPC",
+    icon: "pen-to-square",
+    prefix: "/posts/HPC/OpenMP",
+    children:[
+      
+      "OpenMP_upwind",
+    ]
+  },
+
   //{
-  //  text: "GAMES001",
+  //  text: "Graph Theory",
   //  icon: "pen-to-square",
-  //  prefix: "/posts/MATH/GAMES001",
+  //  prefix: "/posts/MATH/Graph Theory/",
   //  children: [
-  //    "Chapter_1.md",
-  //    "Chapter_2.md",
+  //    "Chapter_1/Chapter_1.md",
+  //    "Basic_concept.md",
+  //    "InClass/",
   //  ],
   //},
-  {
-    text: "Graph Theory",
-    icon: "pen-to-square",
-    prefix: "/posts/MATH/Graph Theory/",
-    children: [
-      "Chapter_1/Chapter_1.md",
-      "Basic_concept.md",
-      "InClass/",
-    ],
-  },
   {
     text: "V2 文档",
     icon: "book",
