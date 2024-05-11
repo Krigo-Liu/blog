@@ -101,6 +101,68 @@ end subroutine core_alogrithmn_LaxFriedrichs
 ```
 ![Lax-Friedrichs](../Computational%20Mathematics/images/FVM_Lax_Friedrichs.png)
 
+### Lax-Friedrichs (Local)
+
+In this case, the pde equation that we want to solve the Burgers' equation is
+$$
+\begin{equation}
+    u_t + (\frac{1}{2}u^2)_x = 0
+\end{equation}
+$$
+
+with the initial solution is
+$$
+\begin{equation}
+    u(x,0) = 0.5 + \sin(\pi x)
+\end{equation}
+$$
+
+The Lax-Friednrichs will be changed into
+$$
+\begin{equation}
+    u_{j}^{n+1} = u_{j}^{n} + \frac{\Delta t}{\Delta x}[\hat{f}_{j+\frac{1}{2}}(u_j,u_{j+1})-\hat{f}_{j-\frac{1}{2}}(u_{j-1},u_j)]
+\end{equation}
+$$
+
+where
+
+$$
+\begin{equation}
+    \hat{f}_{j+\frac{1}{2}}(u_j,u_{j+1}) = \frac{1}{2}[(f(u_j) + f(u_{j+1})) - \alpha(u_{j+1}-u_j)]
+\end{equation}
+$$
+
+with 
+
+$$
+\begin{equation}
+    \alpha = \max_{u\in(u_{j-1},u_{j})}{f^{'}(u)}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+    \hat{f}_{j-\frac{1}{2}}(u_{j-1},u_{j}) = \frac{1}{2}[(f(u_{j-1}) + f(u_{j})) - \alpha(u_{j}-u_{j-1})]
+    
+\end{equation}
+$$
+with 
+
+$$
+\begin{equation}
+    \alpha = \max_{u\in(u_{j},u_{j+1})}{f^{'}(u)}
+\end{equation}
+$$
+
+where $f(u) = \frac{1}{2}u^2$
+
+Therefore, the final result is:
+$$
+\begin{equation}
+    u_{j}^{n+1} = u_{j}^{n} + \frac{\Delta x}{\Delta t}[\frac{1}{4}(u^{2}_{j+1} - u^{2}_{j-1}) + \max\{u_{j-1},u_{j}\}\cdot(u_j - u_{j-1}) - \max\{u_{j},u_{j+1}\}\cdot(u_{j+1} - u_{j})]
+\end{equation}
+$$
+
 ### Lax-Wendroff
 
 The general form:
@@ -172,6 +234,5 @@ end subroutine core_algorithmn_BeamWarming
 
 ![Beam Warming](../Computational%20Mathematics/images/FVM_Beam_Warming.png)
 
-## The implementation of these schemes
-
+## 
 
