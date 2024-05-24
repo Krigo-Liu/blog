@@ -9,6 +9,7 @@ tag:
     - Parallel Computing
 footer: Thank's myself
 copyrigh: 无版权
+date: 2024-05-08
 ---
 
 ## Two familers of parallel machines
