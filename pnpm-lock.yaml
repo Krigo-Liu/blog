@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  gfm:
-    specifier: ^0.0.1
-    version: 0.0.1
-
 devDependencies:
   '@vuepress/bundler-vite':
     specifier: 2.0.0-rc.11
@@ -1586,13 +1581,6 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
-  /commander@1.1.1:
-    resolution: {integrity: sha512-71Rod2AhcH3JhkBikVpNd0pA+fWsmAaVoti6OR38T76chA7vE3pSerS0Jor4wDw+tOueD2zLVvFOw5H0Rcj7rA==}
-    engines: {node: '>= 0.6.x'}
-    dependencies:
-      keypress: 0.1.0
-    dev: false
-
   /commander@8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
@@ -1718,11 +1706,6 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
     dev: true
-
-  /error-provider@0.0.6:
-    resolution: {integrity: sha512-7GDW+LZR01avkedoWHyIaPbJ3BcWBoYaTJWLy0d/Sp1Bo0spLGKRDtoijJnKHiYh+/vOkj9sTX21piduiqZT1w==}
-    deprecated: deprecated
-    dev: false
 
   /esbuild@0.20.2:
     resolution: {integrity: sha512-WdOOppmUNU+IbZ0PaDiTst80zjnrOkyJNHoKupIcVyU8Lvla3Ugx94VzkQ32Ijqd7UhHJy75gNWDMUekcrSJ6g==}
@@ -1902,17 +1885,6 @@ packages:
       is-stream: 4.0.1
     dev: true
 
-  /gfm@0.0.1:
-    resolution: {integrity: sha512-EH72+blfa6NQvhFw6S379+fkcFQ8c/yShNJ/kHNt0zhOB3sqf7JdesNfQxOOwd7cMKUVOFoF+URVKvKHYzmKCQ==}
-    deprecated: DEPRECATED
-    hasBin: true
-    dependencies:
-      commander: 1.1.1
-      error-provider: 0.0.6
-      highlight.js: 7.3.0
-      marked: 0.2.10
-    dev: false
-
   /giscus@1.5.0:
     resolution: {integrity: sha512-t3LL0qbSO3JXq3uyQeKpF5CegstGfKX/0gI6eDe1cmnI7D56R7j52yLdzw4pdKrg3VnufwCgCM3FDz7G1Qr6lg==}
     dependencies:
@@ -1955,11 +1927,6 @@ packages:
   /hash-sum@2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
     dev: true
-
-  /highlight.js@7.3.0:
-    resolution: {integrity: sha512-OHxLFYMoq1D56t6EtTeeB9X8Or+WJMEopds7ZOXzCnNfkjwRWK2QlNhxFVCpX7MT6wGvka6+UD/aDu5MIzHnCw==}
-    deprecated: Version no longer supported. Upgrade to @latest
-    dev: false
 
   /htmlparser2@8.0.2:
     resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
@@ -2087,10 +2054,6 @@ packages:
       commander: 8.3.0
     dev: true
 
-  /keypress@0.1.0:
-    resolution: {integrity: sha512-x0yf9PL/nx9Nw9oLL8ZVErFAk85/lslwEP7Vz7s5SI1ODXZIgit3C5qyWjw4DxOuO/3Hb4866SQh28a1V1d+WA==}
-    dev: false
-
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -2175,11 +2138,6 @@ packages:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
     dev: true
-
-  /marked@0.2.10:
-    resolution: {integrity: sha512-LyFB4QvdBaJFfEIn33plrxtBuRjeHoDE2QJdP58i2EWMUTpa6GK6MnjJh3muCvVibFJompyr6IxecK2fjp4RDw==}
-    hasBin: true
-    dev: false
 
   /mathjax-full@3.2.2:
     resolution: {integrity: sha512-+LfG9Fik+OuI8SLwsiR02IVdjcnRCy5MufYLi0C3TdMT56L/pjB0alMVGgoWJF8pN9Rc7FESycZB9BMNWIid5w==}
