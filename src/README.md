@@ -33,5 +33,5 @@ projects:
   #  desc: 伙伴详细介绍
   #  link: https://你的伙伴链接
 
-footer: 今天不开心。
+footer: The Computational Mathematics lose the Future! 😭
 ---
