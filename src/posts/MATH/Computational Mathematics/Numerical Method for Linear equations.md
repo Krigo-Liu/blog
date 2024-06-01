@@ -11,7 +11,7 @@ tag:
     - Computational Mathematics
 footer: Thank's my mentor Cai's help and my classmates
 copyrigh: 无版权
-date: 2024-03-18
+date: 2024-04-18
 ---
 
 ## Numerical Method for Linear equations
@@ -36,6 +36,9 @@ Define:
 - $x_{j+\frac{1}{2}} = x_j + h/2 = (j+\frac{1}{2})h$
 - $\lambda = \frac{k}{h}$ 
 :::
+
+
+
 
 ### Up-Wind schemes:
 

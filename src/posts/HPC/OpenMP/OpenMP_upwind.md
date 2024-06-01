@@ -13,7 +13,9 @@ copyrigh: 无版权
 date: 2024-05-08
 ---
 
-## Fortran Code
+## Version 0.1
+
+### Fortran Code
 
 ```Fortran
 subroutine get_stream_tn_parallel
@@ -21,7 +23,6 @@ subroutine get_stream_tn_parallel
     
     implicit none
     integer :: i, thread_id,partial_Sum,total_Sum
-    
 
     t1_vertex(0)%value = t0_vertex(0)%value - dt * (t0_vertex(0)%value - t0_vertex(nx)%value)/dx
     !$OMP PARALLEL PRIVATE(partial_Sum) SHARED(total_Sum)
@@ -36,7 +37,6 @@ subroutine get_stream_tn_parallel
     
     !$OMP DO
     do i = 1 - nghost, nx + nghost
-        
         t0_vertex(i)%value = t1_vertex(i)%value
     enddo
     !$OMP end DO 
@@ -44,7 +44,7 @@ subroutine get_stream_tn_parallel
 end subroutine get_stream_tn_parallel
 ```
 
-## Result
+### Result
 
 $$
 \begin{array}{c | l l l}
@@ -61,6 +61,9 @@ $$
 327680  & 10378.484375  & 10398.286000  & 35902.890625  & 3592.304000   \\
 \end{array}
 $$
+
+
+## Version 0.2
 
 
 
