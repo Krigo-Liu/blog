@@ -14,10 +14,10 @@ export default navbar([
   {
     text: "HPC",
     icon: "pen-to-square",
-    prefix: "/posts/HPC/OpenMP",
+    prefix: "/posts/HPC/CS267",
     children:[
       
-      "OpenMP_upwind",
+      "CS267 - Lecture 1 Inotroduction",
     ]
   },
 
