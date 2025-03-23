@@ -9,7 +9,7 @@ tags:
   - Fin
 footer: Wondering the architecture of this world in the aspect of finance...
 copyright: 无版权
-date: 2024-09
+date: 2024-09-01
 ---
 
 ### Aim: To learning how to report on economic events and trends in HK, China, and the broader Asia-Pacific region.

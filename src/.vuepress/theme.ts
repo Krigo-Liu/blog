@@ -1,17 +1,15 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import navbar from "./navbar.js";
-import sidebar from "./sidebar.js";
-import { MR_HOPE_AVATAR } from "./logo.js";
+
+import { enNavbar, zhNavbar } from "./navbar/index.js";
+import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://krigo-liu.github.io/blog/",
 
   author: {
     name: "Krigo",
-    url: "https://mister-hope.com",
+    url: "https://krigo-liu.github.io/blog/",
   },
-
-  iconAssets: "fontawesome-with-brands",
 
   logo: "https://theme-hope-assets.vuejs.press/logo.svg",
 
@@ -19,20 +17,7 @@ export default hopeTheme({
 
   docsDir: "src",
 
-  // 导航栏
-  navbar,
-
-  // 侧边栏
-  sidebar,
-
-  // 页脚
-  footer: "默认页脚",
-  displayFooter: false,
-
-  // 博客相关
   blog: {
-    description: "一个应用数学菜逼",
-    intro: "/intro.html",
     medias: {
       // Baidu: "https://example.com",
       // BiliBili: "https://example.com",
@@ -65,32 +50,153 @@ export default hopeTheme({
       // Whatsapp: "https://example.com",
       // Youtube: "https://example.com",
       // Zhihu: "https://example.com",
-      MrHope: "https://mister-hope.com",
+      // VuePressThemeHope: {
+      //   icon: "https://theme-hope-assets.vuejs.press/logo.svg",
+      //   link: "https://theme-hope.vuejs.press",
+      // },
     },
   },
 
-  // 加密配置
+  locales: {
+    "/": {
+      // navbar
+      navbar: enNavbar,
+
+      // sidebar
+      sidebar: enSidebar,
+
+      footer: "Default footer",
+
+      displayFooter: true,
+
+      blog: {
+        description: "A FrontEnd programmer",
+        intro: "/intro.html",
+      },
+
+      metaLocales: {
+        editLink: "Edit this page on GitHub",
+      },
+    },
+
+    /**
+     * Chinese locale config
+     */
+    "/zh/": {
+      // navbar
+      navbar: zhNavbar,
+
+      // sidebar
+      sidebar: zhSidebar,
+
+      footer: "默认页脚",
+
+      displayFooter: true,
+
+      blog: {
+        description: "一个前端开发者",
+        intro: "/zh/intro.html",
+      },
+
+      // page meta
+      metaLocales: {
+        editLink: "在 GitHub 上编辑此页",
+      },
+    },
+  },
+
   encrypt: {
     config: {
-      "/posts/MATH/SLDG/SLDG_coding_explaination.html": ["Liuyuhao1"],
-      "/posts/MATH/SLDG/2d_SLDG.html": ["Liuyuhao1"],
+      "/demo/encrypt.html": {
+        hint: "Password: 1234",
+        password: "1234",
+      },
+      "/zh/demo/encrypt.html": {
+        hint: "Password: 1234",
+        password: "1234",
+      },
     },
   },
 
-  // 多语言配置
-  metaLocales: {
-    editLink: "在 GitHub 上编辑此页",
-  },
-
-  // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
+  // enable it to preview all changes in time
   // hotReload: true,
 
-  // 在这里配置主题提供的插件
+  // These features are enabled for demo, only preserve features you need here
+  markdown: {
+    align: true,
+    attrs: true,
+    codeTabs: true,
+    component: true,
+    demo: true,
+    figure: true,
+    gfm: true,
+    imgLazyload: true,
+    imgSize: true,
+    include: true,
+    mark: true,
+    plantuml: true,
+    spoiler: true,
+    stylize: [
+      {
+        matcher: "Recommended",
+        replacer: ({ tag }) => {
+          if (tag === "em")
+            return {
+              tag: "Badge",
+              attrs: { type: "tip" },
+              content: "Recommended",
+            };
+        },
+      },
+    ],
+    sub: true,
+    sup: true,
+    tabs: true,
+    tasklist: true,
+    vPre: true,
+
+    // uncomment these if you need TeX support
+    // math: {
+    //   // install katex before enabling it
+    //   type: "katex",
+    //   // or install mathjax-full before enabling it
+    //   type: "mathjax",
+    // },
+
+    // install chart.js before enabling it
+    // chartjs: true,
+
+    // install echarts before enabling it
+    // echarts: true,
+
+    // install flowchart.ts before enabling it
+    // flowchart: true,
+
+    // install mermaid before enabling it
+    // mermaid: true,
+
+    // playground: {
+    //   presets: ["ts", "vue"],
+    // },
+
+    // install @vue/repl before enabling it
+    // vuePlayground: true,
+
+    // install sandpack-vue3 before enabling it
+    // sandpack: true,
+
+    // install @vuepress/plugin-revealjs and uncomment these if you need slides
+    // revealjs: {
+    //   plugins: ["highlight", "math", "search", "notes", "zoom"],
+    // },
+  },
+
   plugins: {
     blog: true,
 
-    // 在启用之前需要安装 @waline/client
-    // 警告: 这是一个仅供演示的测试服务器，在生产环境中请自行部署并使用自己的服务器！
+    // Install @waline/client before enabling it
+    // Note: This is for testing ONLY!
+    // You MUST generate and use your own comment service in production.
     // comment: {
     //   provider: "Waline",
     //   serverURL: "https://waline-comment.vuejs.press",
@@ -100,80 +206,15 @@ export default hopeTheme({
       components: ["Badge", "VPCard"],
     },
 
-    // 此处开启了很多功能用于演示，你应仅保留用到的功能。
-    mdEnhance: {
-      align: true,
-      attrs: true,
-      codetabs: true,
-      component: true,
-      demo: true,
-      figure: true,
-      imgLazyload: true,
-      imgSize: true,
-      include: true,
-      mark: true,
-      stylize: [
-        {
-          matcher: "Recommended",
-          replacer: ({ tag }) => {
-            if (tag === "em")
-              return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommended",
-              };
-          },
-        },
-      ],
-      sub: true,
-      sup: true,
-      tabs: true,
-      vPre: true,
-
-      // 在启用之前安装 chart.js
-      // chart: true,
-
-      // insert component easily
-
-      // 在启用之前安装 echarts
-      // echarts: true,
-
-      // 在启用之前安装 flowchart.ts
-      // flowchart: true,
-
-      // gfm requires mathjax-full to provide tex support
-      // gfm: true,
-
-      // 在启用之前安装 katex
-       katex: true,
-
-      // 在启用之前安装 mathjax-full
-      // mathjax: true,
-
-      // 在启用之前安装 mermaid
-      // mermaid: true,
-
-      // playground: {
-      //   presets: ["ts", "vue"],
-      // },
-
-      // 在启用之前安装 reveal.js
-      // revealJs: {
-      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-      // },
-
-      // 在启用之前安装 @vue/repl
-      // vuePlayground: true,
-
-      // install sandpack-vue3 before enabling it
-      // sandpack: true,
+    icon: {
+      prefix: "fa6-solid:",
     },
 
-    // 如果你需要 PWA。安装 vuepress-plugin-pwa2 并取消下方注释
+    // install @vuepress/plugin-pwa and uncomment these if you want a PWA
     // pwa: {
     //   favicon: "/favicon.ico",
     //   cacheHTML: true,
-    //   cachePic: true,
+    //   cacheImage: true,
     //   appendBase: true,
     //   apple: {
     //     icon: "/assets/icon/apple-icon-152.png",
