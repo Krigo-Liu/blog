@@ -5,28 +5,11 @@ export default sidebar({
     "",
     "intro",
     {
-      text: "HPC",
-      icon: "book",
-      prefix:"posts/HPC/OpenMP",
-      children:[
-        "intro",
-        "OpenMP_upwind",
-      ]
-    },
-
-    {
-      text: "Computational Mathematics",
-      icon: "book",
-      prefix: "posts/MATH/Computational Mathematics",
-      children: "structure",
-    },
-    
-    {
       text: "SLDG",
       icon: "book",
       prefix: "posts/MATH/SLDG",
       children: [
-        "1d_SLDG",
+        "SLDG_Introduction",
       ],
     },
     //{
