@@ -7,18 +7,8 @@ export default navbar([
     icon: "pen-to-square",
     prefix: "/posts/MATH/SLDG",
     children: [
-      "1d_SLDG.md",
+      "SLDG_Introduction.md",
     ],
-  },
-
-  {
-    text: "HPC",
-    icon: "pen-to-square",
-    prefix: "/posts/HPC/OpenMP",
-    children:[
-      
-      "OpenMP_upwind",
-    ]
   },
 
   //{
