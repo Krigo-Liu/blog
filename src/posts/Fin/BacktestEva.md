@@ -9,7 +9,7 @@ tags:
   - Fin
 footer: What is the meaning of data?
 copyright: 无版权
-date: 2024-11
+date: 2024-11-01
 ---
 # 0 Intro
 

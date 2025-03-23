@@ -9,7 +9,7 @@ tags:
   - Fin
 footer: Wondering the architecture of this world in the aspect of finance...
 copyright: 无版权
-date: 2024-11
+date: 2024-11-01
 ---
 ## 1 Big concepts
 

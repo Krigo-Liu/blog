@@ -9,7 +9,7 @@ tags:
   - AI
 footer: 
 copyright: 无版权
-date: 2024-09
+date: 2024-09-01
 ---
 
 1. An Algorithm is a sequence of instructions that one must perform in order to solve a well-formulated problem.
